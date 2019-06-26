@@ -148,15 +148,21 @@ void printTrajectories(UnicycleGenerator& interpolator, size_t& newMergePoint, I
     std::cerr << "--------------------------------------------->Left Trajectory." << std::endl;
     //print_iDynTree(lFootTrajectory);
     for (auto pose : lFootTrajectory){
-        posLeft << pose.getPosition()(0) << "    " << pose.getPosition()(1) << "    " <<
-                "    " << pose.getPosition()(2)<<"    "<< std::endl;
+        const iDynTree::Rotation rot = pose.getRotation();
+        double s, r1, r2, r3;
+        rot.getQuaternion(s,r1,r2,r3);
+        posLeft << pose.getPosition()(0) << ' ' << pose.getPosition()(1) << ' ' <<
+                ' ' << pose.getPosition()(2)<< ' ' << s << ' ' << r1 << ' ' << r2 << ' ' << r3 << std::endl;
     }
 
     std::cerr << "--------------------------------------------->Right Trajectory." << std::endl;
     //print_iDynTree(rFootTrajectory);
     for (auto pose : rFootTrajectory){
-        posRight << pose.getPosition()(0) << " " << pose.getPosition()(1) << " " <<
-                    " " << pose.getPosition()(2)<<"    "<< std::endl;
+        const iDynTree::Rotation rot = pose.getRotation();
+        double s, r1, r2, r3;
+        rot.getQuaternion(s,r1,r2,r3);
+        posRight << pose.getPosition()(0) << ' ' << pose.getPosition()(1) << ' ' <<
+                    ' ' << pose.getPosition()(2)<< ' ' << s << ' ' << r1 << ' ' << r2 << ' ' << r3 << std::endl;
     }
 
     static std::vector<double> weightInLeft, weightInRight;

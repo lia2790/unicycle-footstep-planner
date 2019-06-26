@@ -810,4 +810,10 @@ bool UnicyclePlanner::getPersonPosition(double time, iDynTree::Vector2& personPo
     return true;
 }
 
+bool UnicyclePlanner::getDesiredTrajectoryPoint(double time, iDynTree::Vector2 &yDesired, iDynTree::Vector2 &yDotDesired)
+{
+    std::lock_guard<std::mutex> guard(m_mutex);
+
+    return m_controller->getDesiredPoint(time, yDesired, yDotDesired);
+}
 

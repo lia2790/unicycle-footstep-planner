@@ -111,6 +111,8 @@ public:
     bool startWithLeft() const;
 
     bool getPersonPosition(double time, iDynTree::Vector2 &personPosition);
+
+    bool getDesiredTrajectoryPoint(double time,iDynTree::Vector2 &yDes, iDynTree::Vector2 &yDotDes);
 };
 
 #endif // UNICYCLEPLANNER_H

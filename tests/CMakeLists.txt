@@ -15,6 +15,12 @@ target_link_libraries(UnicycleTest UnicyclePlanner ${iDynTree_LIBRARIES})
 add_test(NAME UnicycleTest
   COMMAND UnicycleTest)
 
+# UnicycleOnInclinedPlaneTest
+add_executable(UnicycleOnInclinedPlaneTest UnicycleOnInclinedPlaneTest.cpp)
+target_link_libraries(UnicycleOnInclinedPlaneTest UnicyclePlanner ${iDynTree_LIBRARIES})
+add_test(NAME UnicycleOnInclinedPlaneTest
+  COMMAND UnicycleOnInclinedPlaneTest)
+
 # InterpolationTest
 add_executable(InterpolationTest InterpolationTest.cpp)
 target_link_libraries(InterpolationTest ${iDynTree_LIBRARIES} UnicyclePlanner)
