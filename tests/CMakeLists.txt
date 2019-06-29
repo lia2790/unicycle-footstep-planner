@@ -33,3 +33,10 @@ target_include_directories(DcmInterpolationTest PRIVATE ${CMAKE_CURRENT_SOURCE_D
 target_link_libraries(DcmInterpolationTest ${iDynTree_LIBRARIES} UnicyclePlanner)
 add_test(NAME DcmInterpolationTest
   COMMAND DcmInterpolationTest)
+
+# DcmInterpolationOnInclinedPlaneTest
+add_executable(DcmInterpolationOnInclinedPlaneTest DcmInterpolationOnInclinedPlaneTest.cpp utils.cpp utils.h)
+target_include_directories(DcmInterpolationOnInclinedPlaneTest PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_link_libraries(DcmInterpolationOnInclinedPlaneTest ${iDynTree_LIBRARIES} UnicyclePlanner)
+add_test(NAME DcmInterpolationOninclinedPlaneTest
+  COMMAND DcmInterpolationOnInclinedPlaneTest)

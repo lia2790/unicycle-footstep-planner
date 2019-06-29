@@ -46,6 +46,7 @@ bool printSteps(std::deque<Step> leftSteps, std::deque<Step> rightSteps){
 }
 
 
+// ADD function
 bool printOnFileSteps(std::deque<Step> leftSteps, std::deque<Step> rightSteps){
 
     std::ofstream posLeft, posRight;
@@ -67,6 +68,7 @@ bool printOnFileSteps(std::deque<Step> leftSteps, std::deque<Step> rightSteps){
     return true;
 }
 
+// ADD function
 bool printOnFileDesiredTrajectory(UnicyclePlanner& planner,double initTime, double endTime, double dT)
 {
     std::ofstream desiredTrajectory;
@@ -161,8 +163,8 @@ bool populateDesiredTrajectory(UnicyclePlanner& planner, double initTime, double
         yDotDes(0) = 0.01;
         yDes(1) = 0.5*std::sin(0.1*t);
         yDotDes(1) = 0.5*0.1*std::cos(0.1*t);
-        yDes(0) = std::cos(inclPlaneAngle)*yDes(0);
-        yDotDes(0) = std::cos(inclPlaneAngle)*yDotDes(0);
+        yDes(0) = std::cos(inclPlaneAngle)*yDes(0); // apply angle (cos) on x position
+        yDotDes(0) = std::cos(inclPlaneAngle)*yDotDes(0); // apply angle (cos) xdot position
         if(!planner.addDesiredTrajectoryPoint(t,yDes, yDotDes))
             return false;
         t += dT;
@@ -235,9 +237,9 @@ bool plannerTest(){
 
     std::cerr << "First test." << std::endl;
     iDynTree::assertTrue(printSteps(leftSteps, rightSteps));
-    iDynTree::assertTrue(printOnFileSteps(leftSteps, rightSteps));
-    iDynTree::assertTrue(printOnFileDesiredTrajectory(planner, conf.initTime, conf.endTime, conf.dT));
-    iDynTree::assertTrue(checkConstraints(leftSteps, rightSteps, conf));
+    iDynTree::assertTrue(printOnFileSteps(leftSteps, rightSteps));  // ADD istruction
+    iDynTree::assertTrue(printOnFileDesiredTrajectory(planner, conf.initTime, conf.endTime, conf.dT)); // ADD istruction
+    iDynTree::assertTrue(checkConstraints(leftSteps, rightSteps, conf)); 
 
 
 
