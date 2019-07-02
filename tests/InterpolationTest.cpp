@@ -25,6 +25,7 @@ typedef struct {
     double comHeightDelta = 0.002;
     double switchOverSwing = 0.6;
     bool swingLeft = true;
+    double inclPlaneAngle = 10;
 } Configuration;
 
 bool configurePlanner(std::shared_ptr<UnicyclePlanner> planner,const Configuration &conf){
@@ -296,7 +297,7 @@ bool interpolationTest(){
     initPosition(1) = conf.dY;
 
     initVelocity.zero();
-
+    initPosition(0) = initPosition(0)*std::cos(iDynTree::deg2rad(conf.inclPlaneAngle));
     finalPosition(0) = initPosition(0) + 0.5;
     finalPosition(1) = initPosition(1) + 0.3;
 
@@ -322,6 +323,8 @@ bool interpolationTest(){
     size_t newMergePoint;
     InitialState newAlpha;
     printTrajectories(unicycle, newMergePoint, newAlpha, 0);
+
+    
     double newInitTime;
     newInitTime = newMergePoint*conf.dT + conf.initTime;
     std::cerr << "New run at " << newInitTime << std::endl;

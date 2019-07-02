@@ -187,7 +187,7 @@ bool plannerTest(){
     conf.maxAngle = iDynTree::deg2rad(45);
     conf.minAngle = iDynTree::deg2rad(5);
     conf.nominalW = 0.14;
-    conf.inclPlaneAngle = iDynTree::deg2rad(10);
+    conf.inclPlaneAngle = iDynTree::deg2rad(0);
     conf.maxT = 10;
     conf.minT = 3;
     conf.nominalT = 4;
