@@ -173,9 +173,6 @@ void printTrajectories(UnicycleGenerator& interpolator, size_t& newMergePoint, I
     std::cerr << "--------------------------------------------->Left Trajectory." << std::endl;
     //print_iDynTree(lFootTrajectory);
     for (auto pose : lFootTrajectory){
-<<<<<<< HEAD
-
-=======
         posLeft << pose.getPosition()(0) << "    " << pose.getPosition()(1) << "    " <<
             "    " << pose.getPosition()(2)<<"    "<< std::endl;
     }
@@ -188,7 +185,6 @@ void printTrajectories(UnicycleGenerator& interpolator, size_t& newMergePoint, I
     for (auto acc : lFootAcceleration){
         accLeft << acc(0) << "    " << acc(1) << "    " << acc(2) << "    "
                 << acc(3) << "    " << acc(4) << "    " << acc(5) <<  std::endl;
->>>>>>> 01e6b1a6f4eebe24d37291caf7c7707e4fab0aab
     }
 
     std::cerr << "--------------------------------------------->Right Trajectory." << std::endl;
